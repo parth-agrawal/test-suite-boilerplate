@@ -1,0 +1,28 @@
+{
+  "name": "backend",
+  "module": "index.ts",
+  "type": "module",
+  "scripts": {
+    "migrate:test": "dotenv -e .env.test -- npx prisma migrate dev && npx prisma generate",
+    "migrate:dev": "dotenv -e .env.dev -- npx prisma migrate dev && npx prisma generate",
+    "start": "npm run migrate:dev && dotenv -e .env.dev npx -- bun index.ts",
+    "test": "npm run migrate:test && dotenv -e .env.test vitest"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/node": "^20.14.10",
+    "@types/supertest": "^6.0.2",
+    "dotenv-cli": "^7.4.2",
+    "prisma": "^5.16.2",
+    "supertest": "^7.0.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.3",
+    "vitest": "^2.0.2"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "@prisma/client": "5.16.2"
+  }
+}
